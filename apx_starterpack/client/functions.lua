@@ -16,7 +16,7 @@ CreateNPC = function()
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
-    TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_TOURIST_MAP", 0, true)
+    TaskStartScenarioInPlace(created_ped, Config.PedAnim, 0, true)
 end
 
 FloatTxT = function(msg, coords)
