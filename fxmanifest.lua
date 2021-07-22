@@ -1,5 +1,6 @@
 fx_version 'adamant'
 game 'gta5'
+description "A simple starterpack for esx"
 
 client_scripts {"*.lua"}
 
