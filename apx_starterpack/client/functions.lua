@@ -3,8 +3,8 @@
 SpawnNPC = function()
     Citizen.CreateThread(function()
        
-        RequestModel(GetHashKey("a_f_m_fatbla_01"))
-        while not HasModelLoaded(GetHashKey("a_f_m_fatbla_01")) do
+        RequestModel(GetHashKey(Config.Ped))
+        while not HasModelLoaded(GetHashKey(Config.Ped)) do
             Wait(1)
         end
         CreateNPC()   
@@ -12,11 +12,19 @@ SpawnNPC = function()
 end
 
 CreateNPC = function()
-    created_ped = CreatePed(5, GetHashKey("a_f_m_fatbla_01") , Config.Ped.x, Config.Ped.y, Config.Ped.z, Config.Ped.rotation, false, true)
+    created_ped = CreatePed(5, GetHashKey(Config.Ped) , Config.Coords.x, Config.Coords.y, Config.Coords.z, Config.Coords.rotation, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
-    TaskStartScenarioInPlace(created_ped, "CODE_HUMAN_MEDIC_TIME_OF_DEATH", 0, true)
+    TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_TOURIST_MAP", 0, true)
+end
+
+FloatTxT = function(msg, coords)
+    AddTextEntry('esxFloatingHelpNotification', msg)
+	SetFloatingHelpTextWorldPosition(1, coords)
+	SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
+	BeginTextCommandDisplayHelp('esxFloatingHelpNotification')
+	EndTextCommandDisplayHelp(2, false, false, -1)
 end
 
 
