@@ -8,3 +8,6 @@ Config.Text = "Press ~r~E~w~ to claim your starterpack"
 
 -- PED MODEL --
 Config.Ped = "cs_barry"
+
+-- Ped Animation --
+Config.PedAnim = "PROP_HUMAN_SEAT_CHAIR"
