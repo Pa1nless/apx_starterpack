@@ -42,6 +42,7 @@ Menu = function()
                 SetFollowPedCamViewMode(1)
                 FreezeEntityPosition(PlayerPedId(), false)
                 TriggerServerEvent("apx_starterpack:server:markAsUsed")
+                menu.close()
             elseif val == "decline" then
                 SetFollowPedCamViewMode(1) 
                 FreezeEntityPosition(PlayerPedId(), false)
