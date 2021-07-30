@@ -19,14 +19,6 @@ CreateNPC = function()
     TaskStartScenarioInPlace(created_ped, Config.PedAnim, 0, true)
 end
 
-FloatTxT = function(msg, coords)
-    AddTextEntry('esxFloatingHelpNotification', msg)
-   SetFloatingHelpTextWorldPosition(1, coords)
-   SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
-   BeginTextCommandDisplayHelp('esxFloatingHelpNotification')
-   EndTextCommandDisplayHelp(2, false, false, -1)
-end
-
 Menu = function()
     if Config.UseMenuDefault then
         ESX.UI.Menu.Open('default',GetCurrentResourceName(),"np_carryped_broke_license",
