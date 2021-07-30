@@ -16,7 +16,7 @@ Citizen.CreateThread(function()
         local _pedpos = GetEntityCoords(_ped)
         if GetDistanceBetweenCoords(_pedpos, Config.Coords.x, Config.Coords.y, Config.Coords.z, true) < 3 then
             _apx = 0
-            FloatTxT(Config.Text, vector3(Config.Coords.x, Config.Coords.y, Config.Coords.z + 1.8))
+            showFloatingHelpNotification(Config.Text, vector3(Config.Coords.x, Config.Coords.y, Config.Coords.z + 1.8))
             if IsControlJustPressed(1, 38) then
                 ESX.TriggerServerCallback('apx_starterpack:server:checkIfUsed', function(hasChecked)
                     if hasChecked then
@@ -32,3 +32,11 @@ Citizen.CreateThread(function()
         Citizen.Wait(_apx)
     end
 end)
+
+function showFloatingHelpNotification(message, coords)
+    AddTextEntry('float', message)
+    SetFloatingHelpTextWorldPosition(1, coords)
+    SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
+    BeginTextCommandDisplayHelp('float')
+    EndTextCommandDisplayHelp(2, false, false, -1)
+end
