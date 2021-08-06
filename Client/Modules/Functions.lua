@@ -1,18 +1,16 @@
 -- Starting Functions --
-
 SpawnNPC = function()
-    Citizen.CreateThread(function()
-       
+    CreateThread(function()
         RequestModel(GetHashKey(Config.Ped))
         while not HasModelLoaded(GetHashKey(Config.Ped)) do
-            Wait(1)
+            Wait(15)
         end
-        CreateNPC()   
+        CreateNPC()
     end)
 end
 
 CreateNPC = function()
-    created_ped = CreatePed(5, GetHashKey(Config.Ped) , Config.Coords.x, Config.Coords.y, Config.Coords.z, Config.Coords.rotation, false, true)
+    created_ped = CreatePed(5, GetHashKey(Config.Ped), Config.Coords, Config.Heading, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
@@ -21,14 +19,14 @@ end
 
 Menu = function()
     if Config.UseMenuDefault then
-        ESX.UI.Menu.Open('default',GetCurrentResourceName(),"np_carryped_broke_license",
-        { 
-        title = "Starter Pack", 
-        align = "bottom-right", 
-        elements = {
-            {label = "Accept Reward", value = "accept"},
-            {label = "Decline", value = "decline"}
-        }}, function(data, menu)
+        ESX.UI.Menu.Open('default',GetCurrentResourceName(),"np_carryped_broke_license", { 
+            title = "Starter Pack", 
+            align = "bottom-right", 
+            elements = {
+                {label = "Accept Reward", value = "accept"},
+                {label = "Decline", value = "decline"}
+            }
+        }, function(data, menu)
             local val = data.current.value 
             if val == "accept" then 
                 SetFollowPedCamViewMode(1)
@@ -40,7 +38,6 @@ Menu = function()
                 FreezeEntityPosition(PlayerPedId(), false)
                 menu.close()
             end 
-            
         end, function(data, menu) 
             menu.close() 
         end)
@@ -51,9 +48,3 @@ Menu = function()
         TriggerEvent("guille_cont:client:open", "Starter Pack", data, false)
     end
 end
-
-
-
-
-
-

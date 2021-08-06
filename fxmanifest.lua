@@ -6,6 +6,7 @@ author "Pa1nlessz#2021"
 
 description "A simple starterpack for esx"
 
+lua54 'yes'
 
 client_scripts {
   'Client/Modules/*.lua',
@@ -19,7 +20,4 @@ server_scripts {
   'Server/*.lua',
 }
 
-shared_scripts {
-  'Config.lua'
-}
-
+shared_script 'Config.lua'
